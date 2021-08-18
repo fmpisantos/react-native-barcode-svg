@@ -104,7 +104,7 @@ const drawSvgBars = (encodings, options = {}) => {
 
 export default function Barcode(props) {
   const {
-    value, format, singleBarWidth, maxWidth, height, lineColor, backgroundColor, onError,
+    value, format, singleBarWidth, maxWidth, height, lineColor, backgroundColor, onError, getRef
   } = props;
   const [bars, setBars] = useState([]);
   const [barcodeWidth, setBarCodeWidth] = useState(0);
@@ -153,6 +153,7 @@ export default function Barcode(props) {
             fill={lineColor}
             viewBox={`0 0 ${barcodeWidth} ${height}`}
             preserveAspectRatio="none"
+            ref={getRef}
           >
             <Path d={bars.join(' ')} />
           </Svg>
